@@ -1,0 +1,87 @@
+/*Estilos de carga de las paginas*/
+.loader-page {
+    position: fixed;
+    z-index: 25000;
+    background: rgb(255, 255, 255);
+    left: 0px;
+    top: 0px;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition:all .3s ease;
+  }
+  .loader-page::before {
+    content: "";
+    position: absolute;
+    border: 8px solid rgb(76, 175, 80);
+    width: 60px;
+    height: 60px;
+    border-radius: 70%;
+    box-sizing: border-box;
+    border-left: 8px solid rgba(76, 175, 80,0);
+    border-top: 8px solid rgba(76, 175, 80,0);
+    animation: rotarload 1s linear infinite;
+    transform: rotate(0deg);
+  }
+  @keyframes rotarload {
+      0%   {transform: rotate(0deg)}
+      100% {transform: rotate(360deg)}
+  }
+  .loader-page::after {
+    content: "";
+    position: absolute;
+    border: 8px solid rgba(76, 175, 80,.5);
+    width: 60px;
+    height: 60px;
+    border-radius: 70%;
+    box-sizing: border-box;
+    border-left: 8px solid rgba(76, 175, 80, 0);
+    border-top: 8px solid rgba(76, 175, 80, 0);
+    animation: rotarload 1s ease-out infinite;
+    transform: rotate(0deg);
+  }
+/*Estilos de carga en portada y usuarios*/
+  .loader-page-get {
+    position: fixed;
+    z-index: 25000;
+    background: rgba(255, 255, 255,0);
+    left: 0px;
+    top: 0px;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition:all .3s ease;
+  }
+  .loader-page-get::before {
+    content: "";
+    position: absolute;
+    border: 8px solid rgb(76, 175, 80);
+    width: 60px;
+    height: 60px;
+    border-radius: 70%;
+    box-sizing: border-box;
+    border-left: 8px solid rgba(76, 175, 80,0);
+    border-top: 8px solid rgba(76, 175, 80,0);
+    animation: rotarload 1s linear infinite;
+    transform: rotate(0deg);
+  }
+
+  .loader-page-get::after {
+    content: "";
+    position: absolute;
+    border: 8px solid rgba(76, 175, 80,.5);
+    width: 60px;
+    height: 60px;
+    border-radius: 70%;
+    box-sizing: border-box;
+    border-left: 8px solid rgba(76, 175, 80, 0);
+    border-top: 8px solid rgba(76, 175, 80, 0);
+    animation: rotarload 1s ease-out infinite;
+    transform: rotate(0deg);
+  }
+
+
