@@ -32,6 +32,8 @@
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 
     <!--Scripts Personales-->
+    <script src="{{ asset('js/mensaje.js') }}"></script>
+
     <script src="{{ asset('js/Ca_01.js') }}"></script>
 
     <script src="{{ asset('js/Po_01.js') }}"></script>
@@ -50,6 +52,7 @@
 
     <script src="{{ asset('js/Pregunta.js')}}"></script>
 
+    <script src="{{ asset('js/RegisterUser.js')}}"></script>
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
 
@@ -89,48 +92,6 @@
                             @endif
                         @else
                         
-                        @switch(Auth::user()->roles[0]->Nombre)
-                            @case('Supervisor')
-                            <!--opciones de encargado-->
-                                <li class="nav-item dropdown">
-                                    <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                        <i class="far fa-envelope"></i>  4
-                                    </a>
-                                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                        <a class="dropdown-item" href="#"><i class="fas fa-cubes"></i>
-                                            Productos para consignar
-                                        </a>
-                                        <a class="dropdown-item" href="#"><i class="fas fa-sync-alt"></i>
-                                            Recuperar Contraseñas
-                                        </a>
-                                        <div class="dropdown-divider"></div>
-                                         <a class="dropdown-item active" href="#">
-                                            Administrar <i class="fas fa-chevron-right"></i>
-                                        </a>
-                                    </div>
-                                </li>
-                                @break
-                            @case('Encargado')
-                                <li class="nav-item dropdown">
-                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                    <i class="far fa-envelope"></i>  4
-                                </a>
-                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="#"><i class="fas fa-cubes"></i>
-                                        Productos para consignar
-                                    </a>
-                                    <a class="dropdown-item" href="#"><i class="fas fa-sync-alt"></i>
-                                        Recuperar Contraseñas
-                                    </a>
-                                    <div class="dropdown-divider"></div>
-                                     <a class="dropdown-item active" href="#">
-                                        Administrar <i class="fas fa-chevron-right"></i>
-                                    </a>
-                                </div>
-                            </li>
-                            <!--Termina opcion de encargado-->
-                                @break
-                        @endswitch
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                     <i class="far fa-user-circle"></i>  {{ Auth::user()->name }}
@@ -151,7 +112,7 @@
                                     @break
 
                                    @case('Contador')
-                                    <a class="dropdown-item" href="{{ url('') }}"><i class="far fa-address-card"></i>
+                                    <a class="dropdown-item" href="{{ url('Contador') }}"><i class="far fa-address-card"></i>
                                         {{ __('Cuenta') }}
                                     </a>
                                     @break

@@ -42,7 +42,7 @@
                         @include('Content_Encargado.ConsignacionProductos')
                     </div>
                     <div class="tab-pane fade" id="v-pills-Usuarios" role="tabpanel" aria-labelledby="v-pills-Usuarios-tab">
-                        @include('auth.restUser')
+                        @include('auth.restUserEncargado')
                     </div>
                 </div>
             </div>

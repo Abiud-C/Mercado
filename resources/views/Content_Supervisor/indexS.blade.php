@@ -18,12 +18,12 @@
                         Inicio
                     </a>
                 </li>
-                <li class="nav-item">
+                <!--li class="nav-item">
       			   <a class="nav-link" id="v-pills-Tablero-tab" data-toggle="pill" href="#v-pills-Tablero" role="tab" aria-controls="v-pills-Tablero" aria-selected="false">
                         <i class="far fa-address-card"></i> 
                         Generales
                     </a>
-                </li>
+                </li-->
                 <li class="nav-item">
       			   <a class="nav-link" id="v-pills-Categorias-tab" data-toggle="pill" href="#v-pills-Categorias" role="tab" aria-controls="v-pills-Categorias" aria-selected="false">
                         <i class="fas fa-puzzle-piece"></i> 
@@ -51,13 +51,13 @@
     				    @include('Content_Supervisor.TableroMercado')
                     </div>
                     <div class="tab-pane fade" id="v-pills-Tablero" role="tabpanel" aria-labelledby="v-pills-Tablero-tab">
-    				    @include('Content_Supervisor.HistorialVendedor')
+    				    @include('metodo_pago.indexMetodoPago')
                     </div>
                     <div class="tab-pane fade" id="v-pills-Categorias" role="tabpanel" aria-labelledby="v-pills-Categorias-tab">
     				    @include('categorias.IndexCategorias')
                     </div>
                     <div class="tab-pane fade" id="v-pills-Usuarios" role="tabpanel" aria-labelledby="v-pills-Usuarios-tab">
-    				
+    				    @include('auth.restUser')
                     </div>
                     <div class="tab-pane fade" id="v-pills-kardex" role="tabpanel" aria-labelledby="v-pills-kardex-tab">
                         @include('Content_Supervisor.KardexProductos')

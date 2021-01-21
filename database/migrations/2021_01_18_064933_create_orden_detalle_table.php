@@ -14,7 +14,13 @@ class CreateOrdenDetalleTable extends Migration
     public function up()
     {
         Schema::create('orden_detalle', function (Blueprint $table) {
-            $table->id();
+            $table->increments('id');
+            $table->integer('orden_id')->unsigned();
+            $table->integer('producto_id')->unsigned();
+            $table->integer('cantidad');
+            $table->double('precio');
+            $table->foreign('orden_id')->references('id')->on('orden')->cascade();
+            $table->foreign('producto_id')->references('id')->on('productos')->cascade();
             $table->timestamps();
         });
     }

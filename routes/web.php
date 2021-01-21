@@ -24,6 +24,10 @@ Route::resource("categorias","CategoriaController")->middleware('auth');
 
 Route::resource("productos","ProductoController")->middleware('auth');
 
+Route::resource("carrito","CarritoController")->middleware('auth');
+
+Route::resource("compra","CompraController")->middleware('auth');
+
 Route::put("EstatusProducto/{producto}","ProductoController@updateEstado")->name("EstatusProducto")->middleware('auth');
 
 Route::get("revision/productos/{producto}","ProductoController@GetVistaProducto")->name("revision/productos");
@@ -33,6 +37,7 @@ Route::resource("pregunta","PreguntarController");
 Route::resource("Admin","AdminController")->middleware('auth');
 Route::resource("Encargado","EncargadoController")->middleware('auth');
 Route::resource("Cliente","ClienteController")->middleware('auth');
+Route::resource("Contador","ContadorController")->middleware('auth');
 
 Route::resource("Registro","RegisterUserController");
 

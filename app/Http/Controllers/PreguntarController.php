@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Pregunta;
+use App\Respuesta;
 use App\Producto;
 use App\User;
 use DB;
@@ -44,8 +45,28 @@ class PreguntarController extends Controller
      */
     public function store(Request $request)
     {
-        //sección para craer la pregunta
-        return response($request);
+        //sección para craer la respuesta
+        $user = Auth::user()->id; 
+        try {
+           
+            $respuesta = Respuesta::create([
+                'Contenido' => $request['Contenido'],
+                'pregunta_id' => $request['id'],
+                'user_id' => $user,
+            ]);
+
+            $pregunta = Pregunta::find($request->id);
+            $pregunta->estatus = 1;
+            $pregunta->save();
+            
+            return $request->expectsJson()? response()->json( $pregunta->toArray(), 200): "agregado" ;
+            } catch (Exception $exception) {
+                    if ($exception instanceof \Illuminate\Database\QueryException) {    
+                        if($request->expectsJson()){
+                            return response()->json($exception->getMessage(), 501);  
+                        }
+                    }    
+                }
     }
 
     /**
@@ -56,22 +77,13 @@ class PreguntarController extends Controller
      */
     public function show($id)
     {
-        //
-        $Pregunta = Pregunta::findOrFail($id)->join('users','users.id','=','preguntas.user_id')->first();
-
+        //funcion que consulta la pregunta para mostrarlo en el modal
+        $Pregunta = Pregunta::findOrFail($id);
+        $Pregunta->user;
+        $Pregunta->producto->fotos;
         return Response()->json($Pregunta);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
 
     /**
      * Update the specified resource in storage.
@@ -103,14 +115,5 @@ class PreguntarController extends Controller
                 }
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
-    }
+
 }

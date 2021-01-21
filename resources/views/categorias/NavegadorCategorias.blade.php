@@ -20,7 +20,11 @@
 			    </li>
       		</ul>
       		<form class="form-inline">
-      			<a href="#" class="mr-sm-4" ><i class="fas fa-shopping-cart"></i></a>
+            @guest
+      			<a href="#" class="mr-sm-4" id="carritoIconOut"><i class="fas fa-shopping-cart"></i></a>
+            @else
+            <a href="{{url('carrito/'.Auth::user()->id)}}" class="mr-sm-4" id="carritoIcon"><i class="fas fa-shopping-cart"></i></a>
+            @endguest
       		</form>
   			  <form class="form-inline">
     			   <input class="form-control mr-sm-2" id="BuscarInicio"  placeholder="Buscar productos, marcas y más..." aria-label="Ingrese el producto a buscar">

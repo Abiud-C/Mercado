@@ -5,7 +5,9 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Producto;
 use App\Categoria;
-
+use App\User;
+use App\Role;
+use DB;
 class EncargadoController extends Controller
 {
     /**
@@ -16,9 +18,11 @@ class EncargadoController extends Controller
     public function index()
     {
         //
+        $Tipo = Role::where('Nombre','!=','Supervisor')->get();
         $Categoria = Categoria::all();
         $ProductosRevision = Producto::where('Estatus','=',0)->get();
-        return view("Content_Encargado.indexE",compact('ProductosRevision','Categoria'))->with('Mensaje','Productos para revisión');
+        $Users = DB::table('users')->join('role_user','role_user.user_id','=','users.id')->where('role_user.role_id','!=',1)->get();
+        return view("Content_Encargado.indexE",compact('ProductosRevision','Categoria','Users','Tipo'))->with('Mensaje','Productos para revisión');
     }
 
     /**

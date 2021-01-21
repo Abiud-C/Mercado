@@ -35,13 +35,13 @@
                 <div class="container-sm">
     			     <div class="tab-content container-sm" id="v-pills-tabContent">
     				    <div class="tab-pane fade show active" id="v-pills-Inicio" role="tabpanel" aria-labelledby="v-pills-Inicio-tab">
-                            @include('auth.perfil')
+                           
     				    </div>
     				    <div class="tab-pane fade" id="v-pills-ProductosCliente" role="tabpanel" aria-labelledby="v-pills-ProductosCliente-tab">
-    					    @include('productos.IndexProductos')
+    					    
     				    </div>
                         <div class="tab-pane fade" id="v-pills-Preguntas" role="tabpanel" aria-labelledby="v-pills-Preguntas-tab">
-                            @include('preguntas.IndexPreguntas')
+                           
                         </div>
     			     </div>
                 </div>
