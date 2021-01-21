@@ -25,7 +25,7 @@
               <img id="foto" src="{{asset('storage').'/'.$Foto_Producto->File_Name}}" class="img-fluid mx-auto" alt="Responsive image">
           </div>
           <div class="col">
-          <form>
+          <form >
             <div class="form-row">
               <div class="form-group col-md-6">
                 <h5>{{$Vista_Producto->Nombre}}</h5>
@@ -50,24 +50,28 @@
               <label class="col-form-label-sm" id="Garantia">{{$Vista_Producto->Garantia}}</label>
             </div>
             <!--Formulario de compra-->
-            <div class="form-group">
-              <h6>Stock disponible</h6>
-              <div class="input-group ">
-                <div class="input-group-prepend">
-                  <label class="input-group-text text-secondary" for="CantidadCompra"><strong class="text-body">Cantidad</strong>({{$Vista_Producto->Cantidad}} disponibles) <strong class="text-body">:</strong></label>
+            <form id="FormCompraProducto" action="{{url('/compra')}}" method="POST">
+              {{ csrf_field() }}
+              <div class="form-group">
+                <h6>Stock disponible</h6>
+                <div class="input-group ">
+                  <input type="hidden" name="idProducto" value="{{$Vista_Producto->id}}" >
+                  <div class="input-group-prepend">
+                    <label class="input-group-text text-secondary" for="CantidadCompra"><strong class="text-body">Cantidad</strong>({{$Vista_Producto->Cantidad}} disponibles) <strong class="text-body">:</strong></label>
+                  </div>
+                  <select name="CantidadCompra" class="custom-select" id="CantidadCompra">
+                    <option value="1" selected>1 unidad</option>
+                    @for ($i = 2; $i <= $Vista_Producto->Cantidad; $i++)
+                    <option value="{{$i}}">{{ $i }} unidades</option>
+                    @endfor
+                  </select>
                 </div>
-                <select class="custom-select" id="CantidadCompra">
-                  <option value="1" selected>1 unidad</option>
-                  @for ($i = 2; $i <= $Vista_Producto->Cantidad; $i++)
-                  <option value="{{$i}}">{{ $i }} unidades</option>
-                   @endfor
-                </select>
               </div>
-            </div>
-            <div class="form-group">
-              <button type="button" class="btn btn-primary btn-block Comprar">Comprar ahora</button>
-              <button type="button" class="btn btn btn-secondary btn-block AddCar"><i class="fas fa-cart-plus"></i> Agregar al carrito</button>
-            </div>
+              <div class="form-group">
+                <button type="submit" class="btn btn-primary btn-block Comprar">Comprar ahora</button>
+                <button type="button" class="btn btn btn-secondary btn-block AddCar"><i class="fas fa-cart-plus"></i> Agregar al carrito</button>
+              </div>
+            </form>
             <!--termina formulario de compra-->
           </form>
           </div>

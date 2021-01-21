@@ -14,7 +14,9 @@ $(document).ready(function(){
 		},
 		minLenght:1,
 		select:function(event, ui){
-			alert("Selecciono:"+ui.item.label);
+			//alert("Selecciono:"+ui.item.label);
+			console.log(ui.item.id);
+			window.location.href = "/productos/"+ui.item.id+"";
 		}
 	});
 });

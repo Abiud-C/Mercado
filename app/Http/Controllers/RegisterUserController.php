@@ -88,6 +88,9 @@ class RegisterUserController extends Controller
     public function edit($id)
     {
         //
+        $user= User::findOrFail($id);
+        $user->roles; 
+        return Response()->json($user);
     }
 
     /**
@@ -100,6 +103,26 @@ class RegisterUserController extends Controller
     public function update(Request $request, $id)
     {
         //
+        $user = User::find($id);
+        if ($user != null){
+            try{ 
+                $user->name = $request->name;
+                $user->paterno = $request->paterno;
+                $user->materno = $request->materno;
+                $user->email = $request->email;
+                $user->save();
+                return response()->json($user->toArray() , 200) ; 
+            }catch(Exception $exception)
+            {
+                if ($exception instanceof \Illuminate\Database\QueryException) {    
+                    if( $request->expectsJson()){
+                        return response()->json(  $exception->getMessage(), 501) ;  
+                    }
+                }   
+            }
+        }else{
+            return response()->json("Usuario no encontrado.", 404) ;  
+        }
     }
 
     /**

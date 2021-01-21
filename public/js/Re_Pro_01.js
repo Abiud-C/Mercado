@@ -88,6 +88,11 @@ function getProducto() {
   	})
   	.catch(function (error) {
   		if(error.response.data.exception){
+        Swal.fire({
+          icon: 'error',
+          title: 'Nada para mostrar',
+          text: 'Algo salio mal',
+        })
   			$(".loader-page-get").fadeOut("slow");
   			Reset();
   		}else{
@@ -115,6 +120,11 @@ function putConsignacion() {
   	.catch(function (error) {
   		if(error.response.data.exception){
   			$(".loader-page-get").fadeOut("slow");
+        Swal.fire({
+          icon: 'error',
+          title: 'Algo salio mal',
+          text: 'Intentelo nuevamente',
+        })
   			Reset();
   		}else{
   			$(".loader-page-get").fadeOut("slow");

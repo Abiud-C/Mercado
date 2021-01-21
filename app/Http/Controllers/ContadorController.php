@@ -3,36 +3,18 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\User;
-use App\Role;
-use App\Producto;
-use App\Pregunta;
-use App\Categoria;
-use DB;
 
-class AdminController extends Controller
+class ContadorController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Request $request)
+    public function index()
     {
         //
-        if($request->user()->authorizeRoles('Supervisor')){
-            $Users = User::all();
-            $Tipo = Role::all();
-            $U = sizeof($Users);
-            $Categoria = Categoria::all();
-            $ProductosRevision = Producto::where('Estatus','=',0)->get();
-            $ProductosCatalogo = Producto::where('Estatus','=',1)->get();            
-            $P = sizeof($ProductosCatalogo);
-            return view("Content_Supervisor.indexS",compact('ProductosCatalogo','Categoria','U','P','Users','Tipo')); 
-        }else{
-            return Error;
-        }
-        
+        return view('Content_Contador.indexC');
     }
 
     /**

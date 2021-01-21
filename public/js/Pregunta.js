@@ -10,6 +10,13 @@ $(document).ready(function(){
 			contenido: $('#Pregunta').val(),
 			_token:tokenPost,
 		}).then(function (response){
+			Swal.fire({
+			  position: 'center',
+			  icon: 'success',
+			  title: 'pregunta realizada',
+			  showConfirmButton: false,
+			  timer: 1500
+			});
 			$('#Pregunta').val('');
 			$('#Pregunta').attr('placeholder','Pregunta...');
 			
@@ -34,8 +41,10 @@ $(document).ready(function(){
 		$('.Responder').attr('disabled', 'disabled');
 		console.log(id);
 		 axios.get('/pregunta/'+id).then(function(response){
-		 	$('#recipient-name').text('De: '+response.data.name+' '+ response.data.paterno);
-		 	$('#contenido-pregunta').text('Pregunta: '+ response.data.contenido);
+		 	$('.modalrespuestaid').attr('id', response.data.id);
+		 	$('#Producto-respuesta').attr('src','storage/'+response.data.producto.fotos[0].File_Name);
+		 	$('#recipient-name').text(''+response.data.user.name+' '+ response.data.user.paterno);
+		 	$('#contenido-pregunta').text(''+ response.data.contenido);
 		 	$(".loader-page-get").fadeOut("slow");
 		 	console.log(response);
 		 }).catch(function(error){
@@ -50,12 +59,9 @@ $(document).ready(function(){
 	{
 		$('.Preguntar').attr('disabled', 'disabled');
 		$('.Responder').attr('disabled', 'disabled');
-		val =$('.NombreProducto').text();
-		$('#TituloProductoRespuesta').text(val);
 		$(".loader-page-get").fadeIn("slow");
-		id = $('.modalrespuesta').attr('id');//De quien hizo la pregunta
+		id = $('.modalrespuesta').attr('id');//De la pregunta
 		tokenPost = $('meta[name="csrf-token"]').attr('content');
-
 		axios.post('/pregunta',{
 			Contenido:$('#message-text').val(),
 			id:id,
@@ -79,7 +85,7 @@ $(document).ready(function(){
 	{
 		$(".loader-page-get").fadeOut("slow");
 		$('#recipient-name').text(' ');
-		$('#message-text').text(' ');
+		$('#message-text').val(' ');
 	}
 
 	function MensajeRespuesta(){

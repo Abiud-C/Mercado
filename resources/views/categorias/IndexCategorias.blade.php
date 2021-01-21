@@ -3,8 +3,9 @@
 		<div class="card-header justify-content-between">
             <div class="d-flex justify-content-between">
                 <h6>{{ __('Mostrando Categorias') }}</h6>
-                <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#ModalCategoria" id="Btn_NuevaCat">
-  					<i class="far fa-plus-square"></i>Nueva categoria
+                <button type="button" class="btn btn-outline-primary btn-sm" data-toggle="modal" data-target="#ModalCategoria" id="Btn_NuevaCat">
+  					<i class="far fa-plus-square"></i>
+  					Nueva categoria
 				</button>
             </div>
         </div>
@@ -28,7 +29,7 @@
 				      <td style="width:370px" class="Description">{{$cate->Description}}</td>
 				      <td>
 				      	<button type="button" class="btn btn-success btn-sm EditarCat" id="{{$cate->id}}"><i class="far fa-edit"></i></button>
-						<button type="button" class="btn btn-danger btn-sm EliminarCat" id="{{$cate->id}}" ><i class="far fa-trash-alt"></i></button>
+						<button type="button" class="btn btn-secondary btn-sm EliminarCat" id="{{$cate->id}}" ><i class="far fa-trash-alt"></i></button>
 				      </td>
 				      <td class="Status">
 						@if($cate->Status == 1)

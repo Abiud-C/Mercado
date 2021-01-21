@@ -5,30 +5,45 @@
 				<th scope="col"></th>
 				<th scope="col">Nombre</th>
 				<th scope="col">Fecha Publ.</th>
-				<th scope="col">Preguntas</th>
 				<th scope="col">Compras</th>
 				<th scope="col">Acciones</th>
 			</tr>
 		</thead>
 		<tbody>
-		<!--@foreach ($ProductosRevision as $pro)-->
+		@foreach ($ProductosCatalogo as $pro)
 			<tr id="{{$pro->id}}">
 				<td><i class="fas fa-box-open"></i></td>
 				<td class="NombrePro">{{$pro->Nombre}}</td>
-				<td></td>
-				<td class="PrecioPro">$ {{$pro->Precio}}</td>
-				<td class="EstatusPro">
-					@if($pro->Estatus == 1)
-						<label class="col-form-label-sm" for="">Consignado</label>
-					@else
-						<label class="col-form-label-sm" for="">Revisar</label>
-					@endif
-				</td>
+				<td class="FechaPub">{{$pro->created_at}}</td>
+				<td class="Compras"></td>
 				<td>
-					<a class="tn btn-success btn-sm" href="{{url('/productos/'.$pro->id.'/edit')}}" id="{{$pro->id}}"><i class="far fa-registered"></i>evisar</a>
+					<a data-toggle="modal" data-target="#ModalRevisarProductos" class="btn btn-success btn-sm btn_Revision"id="{{$pro->id}}"><i class="far fa-registered"></i>Revisar</a>
 				</td>
 			</tr>
-		<!--@endforeach-->
+		@endforeach
 		</tbody>
 	</table>
 </div>
+
+<!--Modal De Productos-->
+    <div class="modal fade" id="ModalRevisarProductos" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="ModalRevisarProductosLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="ModalRevisarProductosLabel"></h5>
+                    <button type="button" class="close btn_Reset_Revisar" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+            <div class="modal-body">
+            	<form  id="FormRevision">
+            		<meta name="csrf-token" content="{{ csrf_token() }}">
+            		@include('productos.ShowProductos')
+            	</form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" data-dismiss="modal">Aceptar</button>
+            </div>
+            </div>
+        </div>
+    </div>

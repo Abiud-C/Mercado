@@ -3,10 +3,6 @@
 		<div class="card-header justify-content-between">
             <div class="d-flex justify-content-between">
                 <h6>{{ __('Todos los usuarios') }}</h6>
-                <a href="" class="btn btn-sm btn-outline-primary" data-toggle="modal" data-target="#ModalUserNew" id="NewUser">
-                	<i class="fas fa-user-plus" ></i>
-                	Nuevo Usuario
-            	</a>
             </div>
         </div>
         <div class="card-body">
@@ -27,7 +23,7 @@
 				      <td>
 				      	<button type="button" class="btn btn-success btn-sm EditarUser" id="{{$user->id}}"><i class="far fa-edit"></i> Actualizar usuario</button>
 
-				      	<!--button type="button" class="btn btn-secondary btn-sm EditarConUser" id="{{$user->id}}"><i class="fas fa-retweet"></i> restaurar contraseña</button-->
+				      	<button type="button" class="btn btn-secondary btn-sm EditarConUser" id="{{$user->id}}"><i class="fas fa-retweet"></i> restaurar contraseña</button>
 				      </td>
 				    </tr>
 				    @endforeach
@@ -62,4 +58,3 @@
     </div>
   </div>
 </div>
-
